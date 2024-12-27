@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactForm;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -118,5 +119,33 @@ class AuthController extends Controller
             'status' => true,
             'message' => 'User logged out successfully!'
         ], 200);
+    }
+
+    public function contact(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'message' => 'required|string|min:10',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors()->all(),
+            ], 422);
+        }
+
+        $submission = ContactForm::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'message' => $request->message,
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Your message has been submitted successfully.',
+            'data' => $submission,
+        ], 201);
     }
 }

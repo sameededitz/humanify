@@ -15,6 +15,8 @@ Route::middleware('guest')->group(function () {
     Route::post('/signup', [AuthController::class, 'signup'])->name('api.login');
 
     Route::post('/reset-password', [VerifyController::class, 'sendResetLink'])->name('api.reset.password');
+
+    Route::post('/contact', [AuthController::class, 'contact'])->name('api.contact');
 });
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -26,7 +28,5 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::post('/email/resend-verification', [VerifyController::class, 'resendVerify'])->name('api.verify.resend');
-
-Route::get('/servers', [ServerController::class, 'index'])->name('api.all.servers');
 
 Route::get('/options', [OptionController::class, 'getOptions'])->name('api.options');

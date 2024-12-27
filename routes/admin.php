@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApiKeyController;
+use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\PlanController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', 'verifyR
 
     Route::get('/options', [OptionController::class, 'Options'])->name('all-options');
     Route::post('/options/save', [OptionController::class, 'saveOptions'])->name('save-options');
+
+    Route::get('/contact-submissions', [ContactFormController::class, 'contactSubmissions'])->name('contact-submissions');
+    Route::get('/contact-submission/{id}', [ContactFormController::class, 'showContactSubmission'])->name('admin.contact-submission.show');
+    Route::delete('/contact-submissions/{submission}', [ContactFormController::class, 'deleteContactSubmission'])->name('delete-contact-submission');
 
     Route::get('/adminUsers', [AdminController::class, 'allAdmins'])->name('all-admins');
 

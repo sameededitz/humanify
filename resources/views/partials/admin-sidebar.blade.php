@@ -24,7 +24,7 @@
                     <span>Api Keys</span>
                 </a>
             </li> --}}
-            
+
             {{-- <li>
                 <a href="{{ route('all-plans') }}">
                     <iconify-icon icon="ph:package-light" class="menu-icon"></iconify-icon>
@@ -41,6 +41,12 @@
                 <a href="{{ route('all-admins') }}">
                     <iconify-icon icon="ri:admin-line" class="menu-icon"></iconify-icon>
                     <span>Manage Admins</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('contact-submissions') }}">
+                    <iconify-icon icon="hugeicons:contact" class="menu-icon"></iconify-icon>
+                    <span>Contact Submissions</span>
                 </a>
             </li>
             <li>
