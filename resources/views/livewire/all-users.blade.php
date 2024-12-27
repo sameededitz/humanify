@@ -18,9 +18,9 @@
                     <td><a href="javascript:void(0)" class="text-primary-600"> {{ $loop->iteration }} </a></td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->purchases->isNotEmpty() ? 'Premium' : 'Free' }}</td>
+                    <td>{{ $user->purchases ? 'Premium' : 'Free' }}</td>
                     <td>
-                        @if ($user->purchases->isNotEmpty())
+                        @if ($user->purchases)
                             <button type="submit" wire:click="clearPurchase({{ $user->id }})"
                                 class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                 <iconify-icon icon="ic:sharp-clear"></iconify-icon>
